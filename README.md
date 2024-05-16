@@ -1,45 +1,37 @@
-# inf_scroll_demo
+# Infinite Scrolling Application
 
-A new Flutter project skeleton.
+This Flutter application demonstrates infinite scrolling functionality along with search and filtering features. It ensures compatibility with Chrome/Desktop browsers and can be run using `flutter run -d chrome` or `flutter run -d mac`.
 
->
-> Your Task:
-> Build an infinite scroll widget that accepts data from 3+ asynchronous sources*, using RxDart.
-> The items in the scroll list can just be text - no images/files required.
-> 
+## Features
 
-1. clone repo
-2. make changes (because the current inf scroll code doesn't really work on Chrome/Desktop, and please make it work)
-3. Feel free to change all the code in main.dart, to whatever you see fit
-3. create a PR on a branch to our repo - or push to your personal repo (the main branch here is protected on GH)
-4. it should run with `flutter run -d chrome` or `flutter run -d mac`
-5. feel free to use chatgpt (etc) to generate code, but bring some custom solutions too, there are lot of cool features to add to infinite scroll, including search/filter
-6. ideally pre-fetch new items + discard old items (outside the viewport) from memory
-7. remember that the feed should have some ranking/sorting way that is somewhat predictable so items aren't arbitrarily re-ordered
-8. and - you can mock all the i/o - no need for any backend services
-5. demo your app to us
+- **Infinite Scroll**: Load more content dynamically as the user scrolls through the feed.
+- **Search/Filter**: Allows users to search and filter content based on specific criteria.
+- **Predictable Sorting**: Ensures that the feed's ranking/sorting remains consistent to prevent arbitrary re-ordering of items.
+
+## Getting Started
+
+To run the application, follow these steps:
+
+1. Clone this repository:
+
+git clone https://github.com/Jaspreet-10/Infinite-Scrolling-Application.git
+
+2. Navigate into the project directory:
+cd Infinite-Scrolling-Application
+
+3. Install dependencies:
+flutter pub get
 
 
-thanks
+4. Run the application:
+flutter run -d chrome
+or
+flutter run -d mac
 
-*Some example data sources:
+## Demo
 
-* memory
-* local-storage (hive)
-* interval (simulate polling)
-* websocket (simulate a websocket connection using a mock library)
+A live demo of the application will be provided during the presentation.
 
- 
+---
 
-## Basics 
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Thank you for giving me this opportunity to work on this wonderful application. Thank you and happy coding!
