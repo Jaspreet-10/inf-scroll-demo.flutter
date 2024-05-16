@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 // //New code and it's working right now without model class
 import 'dart:convert';
@@ -16,10 +17,31 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: InfiniteScrollDemo(),
+=======
+import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+>>>>>>> fork/main
     );
   }
 }
 
+<<<<<<< HEAD
 class InfiniteScrollDemo extends StatefulWidget {
   @override
   _InfiniteScrollDemoState createState() => _InfiniteScrollDemoState();
@@ -33,21 +55,42 @@ class _InfiniteScrollDemoState extends State<InfiniteScrollDemo> {
   int _offset = 0;
   final int _limit = 15;
   List<String> _filteredData = [];
+=======
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  late BehaviorSubject<List<int>> _dataSubject;
+  late ScrollController _scrollController;
+  final int _perPage = 10;
+  int _counter = 0;
+>>>>>>> fork/main
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     _dataSubject = BehaviorSubject<List<String>>.seeded([]);
     _scrollController = ScrollController()..addListener(_scrollListener);
     _searchController = TextEditingController();
     _searchController.addListener(_filterData);
     _fetchData();
+=======
+    _dataSubject = BehaviorSubject<List<int>>();
+    _scrollController = ScrollController()..addListener(_scrollListener);
+    loadData();
+>>>>>>> fork/main
   }
 
   @override
   void dispose() {
     _dataSubject.close();
     _scrollController.dispose();
+<<<<<<< HEAD
     _searchController.dispose();
     super.dispose();
   }
@@ -126,10 +169,33 @@ class _InfiniteScrollDemoState extends State<InfiniteScrollDemo> {
     setState(() {});
   }
 
+=======
+    super.dispose();
+  }
+
+  void loadData() {
+    // Simulating loading data asynchronously
+    Future.delayed(const Duration(seconds: 2), () {
+      final newData = List.generate(_perPage, (index) => _counter * _perPage + index + 1);
+      _dataSubject.add(newData);
+      _counter++; // Increment counter for pagination
+    });
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset >= _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      // Reached the end, load more data
+      loadData();
+    }
+  }
+
+>>>>>>> fork/main
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
         title: const Text("Infinite Scroll Demo"),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(48.0),
@@ -164,16 +230,46 @@ class _InfiniteScrollDemoState extends State<InfiniteScrollDemo> {
                   return _loading
                       ? Center(child: CircularProgressIndicator())
                       : Container();
+=======
+        title: const Text('Infinite Scroll Example'),
+      ),
+      body: StreamBuilder<List<int>>(
+        stream: _dataSubject.stream,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final data = snapshot.data!;
+            return ListView.builder(
+              controller: _scrollController,
+              itemCount: data.length + 1, // +1 for loading indicator
+              itemBuilder: (context, index) {
+                if (index < data.length) {
+                  return ListTile(
+                    title: Text('Item ${data[index]}'),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+>>>>>>> fork/main
                 }
               },
             );
           } else {
+<<<<<<< HEAD
             return Center(child: CircularProgressIndicator());
+=======
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+>>>>>>> fork/main
           }
         },
       ),
     );
   }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fork/main
